@@ -15,4 +15,4 @@ const series = mongoose.Schema({
     Interface: stringParams
 });
 
-module.exports = mongoose.model('', series);
+module.exports = mongoose.model('GraphicsSeries', series);

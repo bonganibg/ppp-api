@@ -11,4 +11,4 @@ const series = mongoose.Schema({
     Speed: numberParams
 });
 
-module.exports = mongoose.model('', series);
+module.exports = mongoose.model('MemorySeries', series);

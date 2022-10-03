@@ -12,4 +12,4 @@ const series = mongoose.Schema({
     Chipset: stringParams
 });
 
-module.exports = mongoose.model('', series);
+module.exports = mongoose.model('MotherboardSeries', series);

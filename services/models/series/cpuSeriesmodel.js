@@ -25,4 +25,4 @@ const series = mongoose.Schema({
     Turbo: numberParams
 });
 
-module.exports = mongoose.model('', series);
+module.exports = mongoose.model('ProcessorSeries', series);
