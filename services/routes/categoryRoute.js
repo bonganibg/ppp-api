@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const seriesRepo = require('../repos/seriesRepo');
+
 
 const Product = require('../models/productModel');
 
@@ -26,14 +28,18 @@ router.get('/:id', (req, res) => {
     {
         category = 3;
     }
+    
 
     if (category > -1)
     {
+        var seriesFilters = seriesRepo();
+
         Product.find()
         .where('Category', category)
         .then((prods) => {
             res.status(200).json({
-                products: prods
+                products: prods,
+                search: seriesFilters
             });
         })
         .catch((err) => {
