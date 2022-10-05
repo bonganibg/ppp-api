@@ -73,7 +73,7 @@ This is the API used for getting product information from the database.
 `GET /category/:id/series/filter?=`
 
 #### example
-    curl -i -H 'Accept: application/json' http://localhost:8080/category/graphics/series/filter?make=rtx2060,gtx1650
+    curl -i -H 'Accept: application/json' http://localhost:8080/category/graphics/series/filter?make=rtx2060&make=rtx3060
 
 ### Response 
     Status: 200 Ok
