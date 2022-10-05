@@ -60,7 +60,7 @@ class GraphicsRepo{
         await GPU.find(query)
         .then((response) => {            
             response.forEach(item => {
-                ids.push(item.ID);                
+                ids.push(item.ID);                                
             });
             return ids;
         })

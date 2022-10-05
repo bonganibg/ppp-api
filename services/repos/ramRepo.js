@@ -63,15 +63,15 @@ class MemoryRepo{
 
         if (data.dimm !== undefined)
         {
-            query['Dimm'] = data.Dimm;
+            query['Dimm'] = data.dimm;
         }
         if (data.capacity !== undefined)
         {
-            query['Capacity'] = data.Capacity;
+            query['Capacity'] = data.capacity;
         }
         if (data.speed !== undefined)
         {
-            query['Speed'] = data.Speed;
+            query['Speed'] = data.speed;
         }
 
         return query;

@@ -63,15 +63,15 @@ class MotherboardRepo{
 
         if (data.dimm !== undefined)
         {
-            query['Dimm'] = data.Dimm;
+            query['Dimm'] = data.dimm;
         }
         if (data.socket !== undefined)
         {
-            query['Socket'] = data.Socket;
+            query['Socket'] = data.socket;
         }
         if (data.chipset !== undefined)
         {
-            query['Chipset'] = data.Chipset;
+            query['Chipset'] = data.chipset;
         }
 
         return query;

@@ -55,12 +55,25 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.get('/:id/series', (req, res) =>{
-    category = getCategory(req.params.id);
+router.get('/:id/series', async (req, res) =>{
+    category = getCategory(req.params.id);    
 
-    console.log(req.query);    
-    
-    res.sendStatus(204);
+    if (category > -1)
+    {
+        var series = new SeriesRepo();
+        
+        try{
+            let seriesIds = await series.getSeriesItems(req.params.id, req.query);
+            res.status(201).json({
+                seriesExternalIDs: seriesIds
+            });
+        }
+        catch(err){
+            console.log(err);
+            res.status(500);
+        }
+    }
+       
     
 });
 

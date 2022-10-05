@@ -80,39 +80,39 @@ class ProcessorRepo{
 
         if (data.range !== undefined)
         {
-            query['Range'] = data.Range;
+            query['Range'] = data.range;
         }
         if (data.series !== undefined)
         {
-            query['Series'] = data.Series;
+            query['Series'] = data.series;
         }
         if (data.model !== undefined)
         {
-            query['Model'] = data.Model;
+            query['Model'] = data.model;
         }
         if (data.socket !== undefined)
         {
-            query['Socket'] = data.Socket;
+            query['Socket'] = data.socket;
         }
         if (data.cores !== undefined)
         {
-            query['Cores'] = data.Cores;
+            query['Cores'] = data.cores;
         }
         if (data.threads !== undefined)
         {
-            query['Threads'] = data.Threads;
+            query['Threads'] = data.threads;
         }
         if (data.cache !== undefined)
         {
-            query['Cache'] = data.Cache;
+            query['Cache'] = data.cache;
         }
         if (data.baseClock !== undefined)
         {
-            query['BaseClock'] = data.BaseClock;
+            query['BaseClock'] = data.baseClock;
         }
         if (data.turbo !== undefined)
         {
-            query['Turbo'] = data.Turbo;
+            query['Turbo'] = data.turbo;
         }
 
         return query;

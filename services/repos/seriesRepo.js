@@ -38,7 +38,7 @@ class SeriesRepo{
         if (series === 'graphics')
         {
             var graphics = new GraphicsRepo();
-            let data = await graphics.getSearchFilterIds(query);            
+            let data = await graphics.getSearchFilterIds(query);                            
             return data;
         }
         else if (series === 'processor')
