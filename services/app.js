@@ -5,6 +5,7 @@ const cors = require('cors');
 
 const productRoute = require('./routes/productRoute');
 const categoryRoute = require('./routes/categoryRoute');
+const seriesRoute = require('./routes/seriesRoute');
 
 const  app = express();
 
@@ -20,6 +21,7 @@ mongoose.connect(localDB, {useNewUrlParser: true, useUnifiedTopology: true})
 
     app.use("/api/product", productRoute);
     app.use("/api/category", categoryRoute);
+    app.use("/api/series", seriesRoute);
 })
 .catch(() => {
     console.log("FAILED to connect to database");

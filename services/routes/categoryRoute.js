@@ -1,45 +1,44 @@
 const express = require('express');
 const router = express.Router();
 
-const seriesRepo = require('../repos/seriesRepo');
-
-
 const Product = require('../models/productModel');
+const GraphicsRepo = require('../repos/gpuRepo');
+const SeriesRepo = require('../repos/seriesRepo');
 
-
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
 
     let searchQuery = req.params.id.toString();
     let category = -1;
 
-    if (searchQuery === 'graphics')
-    {
+    if (searchQuery === 'graphics'){
         category = 0;
     }
-    else if (searchQuery === 'processor')
-    {
+    else if (searchQuery === 'processor'){
         category = 1;
     }
-    else if (searchQuery === 'memory')
-    {
+    else if (searchQuery === 'memory'){
         category = 2;
     }
-    else if (searchQuery === 'motherboard')
-    {
+    else if (searchQuery === 'motherboard'){
         category = 3;
     }
     
 
     if (category > -1)
-    {
-        var seriesFilters = seriesRepo();
-
+    {        
         Product.find()
         .where('Category', category)
-        .then((prods) => {
+        .then(async (prods) => {
+            var seriesRepo = new SeriesRepo();
+            var searchData = await seriesRepo.getSeriesFilters(searchQuery);
+            var searchFilters = 
+            {                                
+                filters: searchData
+            }
+
             res.status(200).json({
                 products: prods,
-                search: seriesFilters
+                searchFilters: searchFilters
             });
         })
         .catch((err) => {
@@ -56,5 +55,31 @@ router.get('/:id', (req, res) => {
     }
 });
 
+router.get('/:id/series', (req, res) =>{
+    category = getCategory(req.params.id);
+
+    console.log(req.query);    
+    
+    res.sendStatus(204);
+    
+});
+
+
+const getCategory = (searchQuery) => {    
+    if (searchQuery === 'graphics'){
+        return 0;
+    }
+    else if (searchQuery === 'processor'){
+        return 1;
+    }
+    else if (searchQuery === 'memory'){
+        return 2;
+    }
+    else if (searchQuery === 'motherboard'){
+        return 3;
+    }
+
+    return -1;
+}
 
 module.exports = router;
