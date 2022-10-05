@@ -4,7 +4,7 @@ const seriesFilters = {
     Range: new Set(),
     Series: new Set(),
     Model: new Set(),
-    Socket: new Set(),    
+    Socket: new Set(),
     Cores: new Set(),
     Threads: new Set(),
     Cache: new Set(),
@@ -21,7 +21,7 @@ class ProcessorRepo{
     }
 
     async loadSeries(){
-        await CPU.find()        
+        await CPU.find()
         .then((data) => {
             data.forEach(product => {
                 seriesFilters.Range.add(product.Range);
@@ -33,7 +33,7 @@ class ProcessorRepo{
                 seriesFilters.Cache.add(product.Cache);
                 seriesFilters.BaseClock.add(product.BaseClock);
                 seriesFilters.Turbo.add(product.Turbo);
-            });                 
+            });
         })
         .catch(err => {
             console.log(err);
@@ -41,17 +41,44 @@ class ProcessorRepo{
     }
 
     convertCpu(){
-        const data = {
-            Range: Array.from(seriesFilters.Range),
-            Series: Array.from(seriesFilters.Series),
-            Model: Array.from(seriesFilters.Model),
-            Socket: Array.from(seriesFilters.Socket),    
-            Cores: Array.from(seriesFilters.Cores),
-            Threads: Array.from(seriesFilters.Threads),
-            Cache: Array.from(seriesFilters.Cache),
-            BaseClock: Array.from(seriesFilters.BaseClock),
-            Turbo: Array.from(seriesFilters.Turbo)
-        }
+        const data = [
+            {
+              name: "Range",
+              items: Array.from(seriesFilters.Range),
+            },
+            {
+              name: "Series",
+              items: Array.from(seriesFilters.Series),
+            },
+            {
+              name: "Model",
+              items:Array.from(seriesFilters.Model),
+            },
+            {
+              name: "Socket",
+              items: Array.from(seriesFilters.Socket),
+            },
+            {
+              name: "Cores",
+              items:Array.from(seriesFilters.Cores),
+            },
+            {
+              name: "Thread",
+              items: Array.from(seriesFilters.Threads),
+            },
+            {
+              name: "Cache",
+              items:Array.from(seriesFilters.Cache),
+            },
+            {
+              name: "Base Clock",
+              items: Array.from(seriesFilters.BaseClock),
+            },
+            {
+              name: "Turbo",
+              items:Array.from(seriesFilters.Turbo)
+            }
+        ]
 
         return data;
     }

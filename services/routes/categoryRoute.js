@@ -22,23 +22,24 @@ router.get('/:id', async (req, res) => {
     else if (searchQuery === 'motherboard'){
         category = 3;
     }
-    
+
 
     if (category > -1)
-    {        
+    {
         Product.find()
         .where('Category', category)
         .then(async (prods) => {
             var seriesRepo = new SeriesRepo();
             var searchData = await seriesRepo.getSeriesFilters(searchQuery);
-            var searchFilters = 
-            {                                
+            var searchFilters =
+            {
                 filters: searchData
             }
 
+            let products = getProductDTO(prods);
             res.status(200).json({
-                products: prods,
-                searchFilters: searchFilters
+                products: products,
+                search: searchFilters
             });
         })
         .catch((err) => {
@@ -47,7 +48,7 @@ router.get('/:id', async (req, res) => {
             });
         });
     }
-    else 
+    else
     {
         res.status(404).json({
                 error: "No products Found"
@@ -55,13 +56,30 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+const getProductDTO  = (prods) => {
+
+  let products = [];
+  prods.forEach((item) => {
+    products.push({
+      externalID: item.ExternalID,
+      name: item.Name,
+      price: item.Price,
+      imagUri: item.ImageUri,
+      category: item.Category,
+      store: item.Store
+    });
+  });
+
+  return products;
+}
+
 router.get('/:id/series', async (req, res) =>{
-    category = getCategory(req.params.id);    
+    category = getCategory(req.params.id);
 
     if (category > -1)
     {
         var series = new SeriesRepo();
-        
+
         try{
             let seriesIds = await series.getSeriesItems(req.params.id, req.query);
             res.status(201).json({
@@ -73,12 +91,12 @@ router.get('/:id/series', async (req, res) =>{
             res.status(500);
         }
     }
-       
-    
+
+
 });
 
 
-const getCategory = (searchQuery) => {    
+const getCategory = (searchQuery) => {
     if (searchQuery === 'graphics'){
         return 0;
     }

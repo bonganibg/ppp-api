@@ -21,7 +21,7 @@ class GraphicsRepo{
     }
 
     async loadSeries(){
-        await GPU.find()        
+        await GPU.find()
         .then((data) => {
             data.forEach(product => {
                 seriesFilters.Series.add(product.Series);
@@ -30,8 +30,8 @@ class GraphicsRepo{
                 seriesFilters.BaseClock.add(product.BaseClock);
                 seriesFilters.MemoryType.add(product.MemoryType);
                 seriesFilters.MemorySize.add(product.MemorySize);
-                seriesFilters.Interface.add(product.Interface);            
-            });                 
+                seriesFilters.Interface.add(product.Interface);
+            });
         })
         .catch(err => {
             console.log(err);
@@ -39,28 +39,49 @@ class GraphicsRepo{
     }
 
     convertGpu(){
-        const data = {
-            Series: Array.from(seriesFilters.Series),
-            Model: Array.from(seriesFilters.Model),
-            Cores: Array.from(seriesFilters.Cores),
-            BaseClock: Array.from(seriesFilters.BaseClock),
-            MemoryType: Array.from(seriesFilters.MemoryType),
-            MemorySize: Array.from(seriesFilters.MemorySize),
-            Interface: Array.from(seriesFilters.Interface)
-        }
+        const data = [
+            {
+              name: "Series",
+              items: Array.from(seriesFilters.Series)
+            },
+            {
+              name: "Model",
+              items: Array.from(seriesFilters.Model)
+            },
+            {
+              name: "Cores",
+              items: Array.from(seriesFilters.Cores)
+            },
+            {
+              name: "BaseClock",
+              items: Array.from(seriesFilters.BaseClock)
+            },
+            {
+              name: "MemoryType",
+              items: Array.from(seriesFilters.MemoryType)
+            },
+            {
+              name: "MemorySize",
+              items: Array.from(seriesFilters.MemorySize)
+            },
+            {
+              name: "Interface",
+              items: Array.from(seriesFilters.Interface)
+            },
+        ]
 
         return data;
     }
 
-    async getSearchFilterIds(data){       
+    async getSearchFilterIds(data){
         let query = this.getSearchQuery(data);
 
         let ids =[];
 
         await GPU.find(query)
-        .then((response) => {            
+        .then((response) => {
             response.forEach(item => {
-                ids.push(item.ID);                                
+                ids.push(item.ID);
             });
             return ids;
         })
@@ -73,7 +94,7 @@ class GraphicsRepo{
 
 
     getSearchQuery(data){
-        
+
         let query = {};
 
         if (data.series !== undefined)
@@ -103,7 +124,7 @@ class GraphicsRepo{
         if (data.interface !== undefined)
         {
             query["Interface"] = data.interface
-        }               
+        }
 
         return query;
     }

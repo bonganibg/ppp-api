@@ -3,7 +3,7 @@ const MOBO = require('../models/series/moboSeriesModel');
 const seriesFilters = {
     Dimm: new Set(),
     Socket: new Set(),
-    Chipset: new Set()    
+    Chipset: new Set()
 }
 
 class MotherboardRepo{
@@ -15,13 +15,13 @@ class MotherboardRepo{
     }
 
     async loadSeries(){
-        await MOBO.find()        
+        await MOBO.find()
         .then((data) => {
             data.forEach(product => {
                 seriesFilters.Dimm.add(product.Dimm);
                 seriesFilters.Socket.add(product.Socket);
                 seriesFilters.Chipset.add(product.Chipset);
-            });                 
+            });
         })
         .catch(err => {
             console.log(err);
@@ -29,11 +29,20 @@ class MotherboardRepo{
     }
 
     convertMobo(){
-        const data = {
-            Dimm: Array.from(seriesFilters.Dimm),
-            Socket: Array.from(seriesFilters.Socket),
-            Chipset: Array.from(seriesFilters.Chipset)
-        }
+        const data = [
+            {
+              name: "Dimm",
+              items: Array.from(seriesFilters.Dimm)
+            },
+            {
+              name: "Socket",
+              items: Array.from(seriesFilters.Socket)
+            },
+            {
+              name: "Chipset",
+              items: Array.from(seriesFilters.Chipset)
+            }
+        ]
 
         return data;
     }

@@ -3,7 +3,7 @@ const RAM = require('../models/series/ramSeriesModel');
 const seriesFilters = {
     Dimm: new Set(),
     Capacity: new Set(),
-    Speed: new Set()    
+    Speed: new Set()
 }
 
 class MemoryRepo{
@@ -15,13 +15,13 @@ class MemoryRepo{
     }
 
     async loadSeries(){
-        await RAM.find()        
+        await RAM.find()
         .then((data) => {
             data.forEach(product => {
                 seriesFilters.Dimm.add(product.Dimm);
                 seriesFilters.Capacity.add(product.Capacity);
                 seriesFilters.Speed.add(product.Speed);
-            });                 
+            });
         })
         .catch(err => {
             console.log(err);
@@ -29,11 +29,20 @@ class MemoryRepo{
     }
 
     convertRam(){
-        const data = {
-            Dimm: Array.from(seriesFilters.Dimm),
-            Capacity: Array.from(seriesFilters.Capacity),
-            Speed: Array.from(seriesFilters.Speed)
-        }
+        const data = [
+            {
+              name: "Dimm",
+              items: Array.from(seriesFilters.Dimm)
+            },
+            {
+              name: "Capacity",
+              items: Array.from(seriesFilters.Capacity)
+            },
+            {
+              name: "Speed",
+              items: Array.from(seriesFilters.Speed)
+            }
+        ]
 
         return data;
     }
