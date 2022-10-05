@@ -42,31 +42,45 @@ class GraphicsRepo{
         const data = [
             {
               name: "Series",
-              items: Array.from(seriesFilters.Series)
+              items: Array.from(seriesFilters.Series),
+              query: "series",
+              extension: ""
             },
             {
               name: "Model",
-              items: Array.from(seriesFilters.Model)
+              items: Array.from(seriesFilters.Model),
+              query: "model",
+              extension: ""
             },
             {
               name: "Cores",
-              items: Array.from(seriesFilters.Cores)
+              items: Array.from(seriesFilters.Cores),
+              query: "cores",
+              extension: "Cores"
             },
             {
-              name: "BaseClock",
-              items: Array.from(seriesFilters.BaseClock)
+              name: "Base Clock",
+              items: Array.from(seriesFilters.BaseClock),
+              query: "baseClock",
+              extension: "MHz"
             },
             {
               name: "MemoryType",
-              items: Array.from(seriesFilters.MemoryType)
+              items: Array.from(seriesFilters.MemoryType),
+              query: "memoryType",
+              extension: ""
             },
             {
-              name: "MemorySize",
-              items: Array.from(seriesFilters.MemorySize)
+              name: "Memory Size",
+              items: Array.from(seriesFilters.MemorySize),
+              query: "memorySize",
+              extension: "GB"
             },
             {
               name: "Interface",
-              items: Array.from(seriesFilters.Interface)
+              items: Array.from(seriesFilters.Interface),
+              query: "interface",
+              extension: ""
             },
         ]
 

@@ -31,16 +31,22 @@ class MemoryRepo{
     convertRam(){
         const data = [
             {
-              name: "Dimm",
-              items: Array.from(seriesFilters.Dimm)
+              name: "DIMM",
+              items: Array.from(seriesFilters.Dimm),
+              query: "dimm",
+              extension: ""
             },
             {
               name: "Capacity",
-              items: Array.from(seriesFilters.Capacity)
+              items: Array.from(seriesFilters.Capacity),
+              query: "capacity",
+              extension: "gb"
             },
             {
               name: "Speed",
-              items: Array.from(seriesFilters.Speed)
+              items: Array.from(seriesFilters.Speed),
+              query: "speed",
+              extension: "MHz"
             }
         ]
 

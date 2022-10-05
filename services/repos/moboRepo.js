@@ -32,15 +32,21 @@ class MotherboardRepo{
         const data = [
             {
               name: "Dimm",
-              items: Array.from(seriesFilters.Dimm)
+              items: Array.from(seriesFilters.Dimm),
+              query: "dimm",
+              extension: ""
             },
             {
               name: "Socket",
-              items: Array.from(seriesFilters.Socket)
+              items: Array.from(seriesFilters.Socket),
+              query: "socket",
+              extension: ""
             },
             {
               name: "Chipset",
-              items: Array.from(seriesFilters.Chipset)
+              items: Array.from(seriesFilters.Chipset),
+              query: "chipset",
+              extension: ""
             }
         ]
 

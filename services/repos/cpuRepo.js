@@ -45,38 +45,56 @@ class ProcessorRepo{
             {
               name: "Range",
               items: Array.from(seriesFilters.Range),
+              query: "range",
+              extension: ""
             },
             {
               name: "Series",
               items: Array.from(seriesFilters.Series),
+              query: "series",
+              extension: ""
             },
             {
               name: "Model",
               items:Array.from(seriesFilters.Model),
+              query: "model",
+              extension: ""
             },
             {
               name: "Socket",
               items: Array.from(seriesFilters.Socket),
+              query: "socket",
+              extension: ""
             },
             {
               name: "Cores",
               items:Array.from(seriesFilters.Cores),
+              query: "cores",
+              extension: ""
             },
             {
               name: "Thread",
               items: Array.from(seriesFilters.Threads),
+              query: "threads",
+              extension: ""
             },
             {
               name: "Cache",
               items:Array.from(seriesFilters.Cache),
+              query: "cache",
+              extension: "MB"
             },
             {
               name: "Base Clock",
               items: Array.from(seriesFilters.BaseClock),
+              query: "baseClock",
+              extension: "MHz"
             },
             {
               name: "Turbo",
-              items:Array.from(seriesFilters.Turbo)
+              items:Array.from(seriesFilters.Turbo),
+              query: "turbo",
+              extension: "MHz"
             }
         ]
 

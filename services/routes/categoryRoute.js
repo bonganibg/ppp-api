@@ -64,7 +64,7 @@ const getProductDTO  = (prods) => {
       externalID: item.ExternalID,
       name: item.Name,
       price: item.Price,
-      imagUri: item.ImageUri,
+      imageUri: item.ImageUri,
       category: item.Category,
       store: item.Store
     });
