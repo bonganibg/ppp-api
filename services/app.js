@@ -11,11 +11,12 @@ const  app = express();
 
 app.use(bodyParser.json());
 
-var localDB = 'mongodb://localhost:27017/Testing-PPP';
+var localDB = 'mongodb://localhost:27017/PC-Part-Prices-FINAL_TESt';
+var cloudDB = 'mongodb+srv://Alphabg:rgRwyC6vNZVuftUD@maincluster.o7kgh.mongodb.net/?retryWrites=true&w=majority'
 
 app.use(cors());
 
-mongoose.connect(localDB, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(cloudDB, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => {
     console.log("Connected to database");
 
