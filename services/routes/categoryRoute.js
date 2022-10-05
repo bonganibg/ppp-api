@@ -66,7 +66,8 @@ const getProductDTO  = (prods) => {
       price: item.Price,
       imageUri: item.ImageUri,
       category: item.Category,
-      store: item.Store
+      store: item.Store,
+      seriesExternalID: item.SeriesExternalID
     });
   });
 
