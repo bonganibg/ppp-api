@@ -12,7 +12,7 @@ const  app = express();
 app.use(bodyParser.json());
 
 var localDB = 'mongodb://localhost:27017/PC-Part-Prices-FINAL_TESt';
-var cloudDB = 'mongodb+srv://Alphabg:rgRwyC6vNZVuftUD@maincluster.o7kgh.mongodb.net/?retryWrites=true&w=majority'
+var cloudDB = 'mongodb+srv://Alphabg:rgRwyC6vNZVuftUD@maincluster.o7kgh.mongodb.net/?retryWrites=true&w=majority/ppp-database'
 
 app.use(cors());
 
