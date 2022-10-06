@@ -24,4 +24,4 @@ const product = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Products', product);
+module.exports = mongoose.model('api-Products', product);
